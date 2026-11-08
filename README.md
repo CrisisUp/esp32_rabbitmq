@@ -51,10 +51,10 @@ text
 ## 🔌 Arquitetura (visão geral)
 
 ```text
-┌─────────────┐ MQTT ┌──────────────┐ AMQP ┌─────────────┐
-│ ESP32 │ ──────────► │ RabbitMQ │ ◄─────────► │ Aplicação │
-│ (cliente) │ ◄────────── │ (broker) │ │ (Python) │
-└─────────────┘ └──────────────┘ └─────────────┘
+┌──────────┐                ┌──────────┐                ┌───────────┐
+│  ESP32   │ ── MQTT:1883 ─►│ RabbitMQ │◄─ AMQP:5672 ── │ Aplicação │
+│ (sensor) │◄─ (publish) ── │ (broker) │ ── (consume) ─►│  (Python) │
+└──────────┘                └──────────┘                └───────────┘
 ```
 
 - ESP32 ↔ RabbitMQ: **MQTT** (porta `1883`)
